@@ -1,0 +1,39 @@
+#container{
+    display: inline-block;
+    border: 1px solid black;
+    position: relative;
+    width: 36vw;
+    height: 40vh;
+    left: 32%;
+    top: 30vh;
+
+}
+
+h1{
+    text-align: center;
+}
+
+#botones{
+    
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+#botones button{
+    margin: 2vw;
+    height: 10vh;
+    width: 8vw;
+}
+
+#botones button a:link, a:visited, a:active {
+    text-decoration:none;
+    color: black;
+}
+
+#logo{
+    position: absolute;
+    width: 10vw;
+    height:10vw;
+    left: 46vw;
+}

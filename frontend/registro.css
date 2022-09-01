@@ -1,0 +1,21 @@
+form{
+    display:flex;
+}
+
+form button{
+    position:relative;
+    top: 28px;
+    left: 20px;
+    height: 10vh;
+}
+
+form div{
+    margin: 10px;
+}
+#logo{
+    position: relative;
+    width: 10vw;
+    height:10vw;
+
+}
+
