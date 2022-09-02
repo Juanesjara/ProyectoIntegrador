@@ -8,12 +8,11 @@ var bodyParser = require('body-parser')
 var jsonParser = bodyParser.json()
 //var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-server.use(express.static("./../frontend"))
+server.use(express.static("./../celular"))
+
 server.use("/imagenes",express.static("./../imagenes"))
 
 server.post('/agregarEquipo',jsonParser, (req, res) => {
-
-
   const {
     nombre,
     color,
@@ -35,6 +34,22 @@ server.post('/agregarEquipo',jsonParser, (req, res) => {
   })
 })
 
+server.get("/traer/equipo/:id",jsonParser, (req, res) => {
+  const{
+    id
+  } = req.params;
+  sequelize.query("SELECT * FROM `equipo` WHERE `id_equipo` = ? ",{
+    replacements: [id],
+    type: sequelize.QueryTypes.SELECT
+  })
+  .then(equipo =>{
+    res.status(200).json(equipo)
+  })
+  .catch(error =>{
+    console.log(error, "error")
+  })
+
+})
 
 server.post('/agregar/equipos/pedido',jsonParser, (req, res) => {
     const {
