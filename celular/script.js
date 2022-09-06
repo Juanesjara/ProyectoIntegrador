@@ -2,33 +2,46 @@ let valores = window.location.search;
 console.log(valores)
 const urlParams = new URLSearchParams(valores);
 var numeroEquipo = urlParams.get('equipo');
-console.log(numeroEquipo)
+//console.log(numeroEquipo) eso es null
+let titulo = document.getElementById("titulo")
+let divCantidad = document.getElementById("divCantidad")
 
-
-function traerEquipo(id){
+async function traerEquipo(id){
     const parametros = {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
         json: true
     }
-    fetch(`https://autopass.loca.lt/traer/equipo/${id}`, parametros)
+    return await fetch(`https://autopass.loca.lt/traer/equipo/${id}`, parametros)
         .then(response => {
             let json = response.json()
+            return json
             .then(a =>{
-                if (response.ok) {
-                    console.log(a)
-                    return a
-                } else {
-                    return json.then(err => {
-                        console.log(err)
-                        throw err
-                    })
-                }
+                console.log(a)
+                console.log(a.length)
+                return a
+                
             })
             
         })
-        .catch(console.log)
+        .catch(console.log,"rr")
 }
 
 
-traerEquipo(numeroEquipo)
+
+
+(async function(){
+    let resultado = await traerEquipo(numeroEquipo)
+    console.log(resultado)
+    if(resultado.length > 0){
+        titulo.innerHTML = 'Estas ingresando el equipo ' + resultado[0].nombre
+    }
+    else{
+        console.log("estoy vacio")
+    }
+    titulo.innerHTML = 'Estas ingresando el equipo ' + resultado[0].nombre
+    if(resultado[0].id_tipoEquipo == 2){
+       divCantidad.classList.remove('display-none');
+    }
+
+})()

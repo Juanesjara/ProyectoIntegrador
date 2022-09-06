@@ -1,5 +1,5 @@
 
-
+//debo verificar que haya un pedido en estado abierto para agregar pedidos al equipo
 function agregarEquiposAlPedido(id_pedido,id_equipo) {
     const pedidoEquipo = {
         "id_pedido" : id_pedido,
@@ -38,4 +38,5 @@ function agregarEquiposAlPedido(id_pedido,id_equipo) {
             
         })
 }
+
 agregarEquiposAlPedido("1", "2")

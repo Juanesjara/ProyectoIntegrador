@@ -12,6 +12,41 @@ server.use(express.static("./../celular"))
 
 server.use("/imagenes",express.static("./../imagenes"))
 
+server.put("/finalizar/pedido", jsonParser, (req,res) =>{
+  const {id_pedido,fecha_fin} = req.body;
+
+  sequelize.query("UPDATE `pedido` SET `fecha_fin` = ? WHERE `pedido`.`id_pedido` = ?",{
+    replacements: [fecha_fin, id_pedido],
+    type: sequelize.QueryTypes.UPDATE
+  })
+  .then(() => {
+    res.status(200).json({
+      mensaje: "Pedido iniciado"
+    })
+  })
+  .catch(error => {
+    console.log(error, 'error')
+  })
+})
+
+
+server.post("/crear/pedido", jsonParser, (req,res) =>{
+  const {id_obra,fecha_inicio} = req.body;
+
+  sequelize.query("INSERT INTO pedido (id_obra, fecha_inicio) VALUE(?,?)",{
+    replacements: [id_obra,fecha_inicio],
+    type: sequelize.QueryTypes.INSERT
+  })
+  .then(() => {
+    res.status(200).json({
+      mensaje: "Pedido iniciado"
+    })
+  })
+  .catch(error => {
+    console.log(error, 'error')
+  })
+})
+
 server.post('/agregarEquipo',jsonParser, (req, res) => {
   const {
     nombre,
