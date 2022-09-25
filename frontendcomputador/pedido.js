@@ -1,4 +1,7 @@
+let pedido = sessionStorage.getItem("pedido")
+let subtitulo = document.getElementById("subtitulo")
 
+subtitulo.innerHTML = "Estas Creado el pedido #" + pedido
 //debo verificar que haya un pedido en estado abierto para agregar pedidos al equipo
 function agregarEquiposAlPedido(id_pedido,id_equipo) {
     const pedidoEquipo = {
@@ -39,4 +42,4 @@ function agregarEquiposAlPedido(id_pedido,id_equipo) {
         })
 }
 
-agregarEquiposAlPedido("1", "2")
+//agregarEquiposAlPedido("1", "2")

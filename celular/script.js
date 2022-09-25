@@ -38,8 +38,9 @@ async function traerEquipo(id){
     }
     else{
         console.log("estoy vacio")
+        titulo.innerHTML = 'No estas ingresando ningun equipo porque en la url no tienes ningun  parametro'
     }
-    titulo.innerHTML = 'Estas ingresando el equipo ' + resultado[0].nombre
+    //titulo.innerHTML = 'Estas ingresando el equipo ' + resultado[0].nombre
     if(resultado[0].id_tipoEquipo == 2){
        divCantidad.classList.remove('display-none');
     }

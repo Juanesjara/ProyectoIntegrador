@@ -12,6 +12,18 @@ server.use(express.static("./../celular"))
 
 server.use("/imagenes",express.static("./../imagenes"))
 
+server.get("/traer/pedidos", jsonParser, (req,res) =>{
+  sequelize.query("SELECT * FROM `pedido` WHERE `estado` = 1",{
+    type: sequelize.QueryTypes.SELECT
+  })
+  .then(pedido =>{
+    res.status(200).json(pedido)
+  })
+  .catch(error =>{
+    console.log("error",error)
+  })
+})
+
 server.put("/finalizar/pedido", jsonParser, (req,res) =>{
   const {id_pedido,fecha_fin} = req.body;
 
@@ -31,15 +43,17 @@ server.put("/finalizar/pedido", jsonParser, (req,res) =>{
 
 
 server.post("/crear/pedido", jsonParser, (req,res) =>{
-  const {id_obra,fecha_inicio} = req.body;
+  const {fecha_inicio} = req.body;
 
-  sequelize.query("INSERT INTO pedido (id_obra, fecha_inicio) VALUE(?,?)",{
-    replacements: [id_obra,fecha_inicio],
+  sequelize.query("INSERT INTO pedido (fecha_inicio, estado) VALUE(?,1)",{
+    replacements: [fecha_inicio],
     type: sequelize.QueryTypes.INSERT
   })
-  .then(() => {
+  .then(pedido => {
+    console.log(pedido)
     res.status(200).json({
-      mensaje: "Pedido iniciado"
+      mensaje: "Pedido iniciado",
+      resultado : pedido
     })
   })
   .catch(error => {

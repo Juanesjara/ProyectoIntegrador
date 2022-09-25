@@ -13,17 +13,17 @@ h1{
     text-align: center;
 }
 
-#botones{
-    
+#botones{ 
     display:flex;
     flex-direction: row;
     justify-content:center;
 }
 
 #botones button{
-    margin: 2vw;
+    margin: 1vw;
     height: 10vh;
     width: 8vw;
+    
 }
 
 #botones button a:link, a:visited, a:active {
