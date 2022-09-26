@@ -52,26 +52,25 @@ async function validarNoHayaPedidoIniciado(){
 
 
 btniniciarPedido.addEventListener("click", async () => {
-    let pedidosIniciados = await validarNoHayaPedidoIniciado()
+    const date = new Date();
+    const [month, day, year] = [date.getMonth()+1, date.getDate(), date.getFullYear()];
+    console.log(month, day, year)
+    let fecha = `${year}-${month}-${day}`
+    console.log(fecha)
+    /*let pedidosIniciados = await validarNoHayaPedidoIniciado()
     if(pedidosIniciados.length == 0){
         console.log("no hay nada")
         console.log(pedidosIniciados)
     }else{
         console.log("hay algo")
         console.log(pedidosIniciados)
-    }
-    const date = new Date();
-    const [month, day, year] = [date.getMonth()+1, date.getDate(), date.getFullYear()];
-    //const [hour, minutes, seconds] = [date.getHours(), date.getMinutes(), date.getSeconds()];
-    console.log(date)
-    console.log(month, day, year)
-    let fecha = `${year}-${month}-${day}`
-    console.log(fecha)
-    //let resultado = await crearPedido(fecha)
-    //console.log(resultado, "xd")
-    //console.log(resultado.resultado[0], "perra") DESCOMENTAR PARA  EXPONER
-    //sessionStorage.setItem("pedido", resultado.resultado[0]);
-    //window.location.href = "./pedido.html"
+    }*/
+        
+    let resultado = await crearPedido(fecha) // LLAMO A LA API PARA CREAR UN PEDIDO
+    console.log(resultado, "xd")
+    console.log(resultado.resultado[0], "perra") //DESCOMENTAR PARA  EXPONER
+    sessionStorage.setItem("pedido", resultado.resultado[0]);
+    window.location.href = "./pedido.html"
 })
 
 window.addEventListener("beforeunload", (evento) => {

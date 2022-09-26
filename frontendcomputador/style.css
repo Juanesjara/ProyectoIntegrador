@@ -23,6 +23,8 @@ h1{
     margin: 1vw;
     height: 10vh;
     width: 8vw;
+    position: relative;
+    left: 3vw;
     
 }
 
@@ -35,5 +37,5 @@ h1{
     position: absolute;
     width: 10vw;
     height:10vw;
-    left: 46vw;
+    left: 45vw;
 }

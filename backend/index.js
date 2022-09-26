@@ -41,10 +41,19 @@ server.put("/finalizar/pedido", jsonParser, (req,res) =>{
   })
 })
 
+W
 
-server.post("/crear/pedido", jsonParser, (req,res) =>{
+function cancelarPedidosActivos(req,res ,next){
+  sequelize.query("UPDATE `pedido` SET `estado` = 4 WHERE `estado` = 1",{
+    type: sequelize.QueryTypes.UPDATE
+  })
+  next();
+}
+
+server.post("/crear/pedido", cancelarPedidosActivos, jsonParser, (req,res) =>{
   const {fecha_inicio} = req.body;
 
+  //FUNCION PARA CREAR UN PEDIDO EN LA BASE DE DATOS 
   sequelize.query("INSERT INTO pedido (fecha_inicio, estado) VALUE(?,1)",{
     replacements: [fecha_inicio],
     type: sequelize.QueryTypes.INSERT
