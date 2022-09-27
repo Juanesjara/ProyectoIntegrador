@@ -12,6 +12,18 @@ server.use(express.static("./../celular"))
 
 server.use("/imagenes",express.static("./../imagenes"))
 
+server.get("/traer/obras",jsonParser, (req,res)=>{
+  sequelize.query("SELECT * FROM `obra`",{
+    type: sequelize.QueryTypes.SELECT
+  })
+  .then(resultado =>{
+    res.status(200).json(resultado)
+  })
+  .catch(error =>{
+    console.log(error)
+  })
+})
+
 server.get("/traer/pedidos", jsonParser, (req,res) =>{
   sequelize.query("SELECT * FROM `pedido` WHERE `estado` = 1",{
     type: sequelize.QueryTypes.SELECT
@@ -41,7 +53,7 @@ server.put("/finalizar/pedido", jsonParser, (req,res) =>{
   })
 })
 
-W
+
 
 function cancelarPedidosActivos(req,res ,next){
   sequelize.query("UPDATE `pedido` SET `estado` = 4 WHERE `estado` = 1",{
