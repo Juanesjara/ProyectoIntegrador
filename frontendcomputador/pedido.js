@@ -1,7 +1,42 @@
-let pedido = sessionStorage.getItem("pedido")
-let subtitulo = document.getElementById("subtitulo")
+let pedido = sessionStorage.getItem("pedido");
+let subtitulo = document.getElementById("subtitulo");
+let selectObras = document.getElementById("obras");
+subtitulo.innerHTML = "Estas Creado el pedido #" + pedido;
 
-subtitulo.innerHTML = "Estas Creado el pedido #" + pedido
+(async function colcandoObras(){
+    let obras = await trayendoObras();
+    console.log(obras)
+    for(let i = 0; i < obras.length; i++){
+        let option = document.createElement("option");
+        option.setAttribute("value", obras[i].id_obra );
+        option.innerHTML = obras[i].nombre
+        selectObras.appendChild(option);
+    }
+})()
+
+async function trayendoObras(){
+    const parametros = {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    return await fetch(`http://localhost:4000/traer/obras`, parametros)
+        .then(response => {
+            let json = response.json()
+            return json
+        })
+        .then(data => {
+                return data
+            }
+        )
+        .catch(error => {
+            console.log(error, 'error')
+            
+        })
+}
+
+
 //debo verificar que haya un pedido en estado abierto para agregar pedidos al equipo
 function agregarEquiposAlPedido(id_pedido,id_equipo) {
     const pedidoEquipo = {

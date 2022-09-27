@@ -73,10 +73,3 @@ btniniciarPedido.addEventListener("click", async () => {
     window.location.href = "./pedido.html"
 })
 
-window.addEventListener("beforeunload", (evento) => {
-    if (true) {
-        evento.preventDefault();
-        evento.returnValue = "hola";
-        return "";
-    }
-});
