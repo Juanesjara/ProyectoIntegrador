@@ -25,6 +25,18 @@ server.get("/traer/obras",jsonParser, (req,res)=>{
 })
 
 server.get("/traer/pedidos", jsonParser, (req,res) =>{
+  sequelize.query("SELECT * FROM `pedido`",{
+    type: sequelize.QueryTypes.SELECT
+  })
+  .then(pedido =>{
+    res.status(200).json(pedido)
+  })
+  .catch(error =>{
+    console.log("error",error)
+  })
+})
+
+server.get("/traer/pedido/activo", jsonParser, (req,res) =>{
   sequelize.query("SELECT * FROM `pedido` WHERE `estado` = 1",{
     type: sequelize.QueryTypes.SELECT
   })
@@ -52,7 +64,6 @@ server.put("/finalizar/pedido", jsonParser, (req,res) =>{
     console.log(error, 'error')
   })
 })
-
 
 
 function cancelarPedidosActivos(req,res ,next){
