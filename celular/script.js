@@ -38,18 +38,52 @@ async function traerPedido(){
             let json = response.json()
             return json
             .then(a =>{
-                console.log(a)
                 return a
             })
             
         })
-        .catch(console.log,)
+        .catch(console.log)
 }
 
+async function agregarEquipoAlPedido(equipo,pedido){
+    const pedidoEquipo = {
+        "pedido": pedido,
+        "equipo": equipo
+    }
+    const parametros = {
+        method: "POST",
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify(pedidoEquipo),
+        json: true,
+    }
+    fetch(`https://autopass.loca.lt/agregar/equipo/pedido`,parametros)
+    .then(response => {
+        let json = response.json()
+        if (response.ok) {
+            return json
+        } else {
+            return json.then(err => {
+                throw err
+            })
+        }
+    })
+    .then(
+        ()=>{
+            console.log("ya puse el equipo en el pedido")
+        }
+    )
+}
 
 btnAgregar.addEventListener("click", async function (){
     let pedidos = await traerPedido();
     console.log(pedidos)
+    let resultado = await traerEquipva
+    if(resultado[0].id_tipoEquipo == 1){
+
+    }else{
+
+    }
+
 });
 
 
