@@ -24,6 +24,8 @@ server.get("/traer/obras",jsonParser, (req,res)=>{
   })
 })
 
+
+
 server.get("/traer/pedidos", jsonParser, (req,res) =>{
   sequelize.query("SELECT * FROM `pedido`",{
     type: sequelize.QueryTypes.SELECT
@@ -112,6 +114,22 @@ server.post('/agregarEquipo',jsonParser, (req, res) => {
     .catch(error => {
       console.log(error, 'error')
      
+  })
+})
+
+server.post("/agregar/equipo/pedido", jsonParser, (req,res)=>{
+  const {equipo, nombre} = req.body;
+  sequelize.query("INSERT INTO `pedidosequipo`(id_pedido, id_equipo) VALUE(?,?)",{
+    replacements: [equipo, nombre],
+    type: sequelize.QueryTypes.INSERT
+  })
+})
+
+server.post("/agregar/equipo/pedido/cantidad", jsonParser, (req,res)=>{
+  const {equipo, nombre,cantidad} = req.body;
+  sequelize.query("INSERT INTO `pedidosequipo`(id_pedido, id_equipo, cantidad_equipos) VALUE(?,?,?)",{
+    replacements: [equipo,nombre,cantidad],
+    type: sequelize.QueryTypes.INSERT
   })
 })
 
