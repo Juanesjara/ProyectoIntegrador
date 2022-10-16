@@ -1,0 +1,132 @@
+.u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 500px;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 60px auto;
+}
+
+*{
+  font-size: 1.5vw;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  background-color: #1D72C2;
+}
+
+header a:link, a:visited ,a:active{
+  text-decoration:none;
+  color:#fff;
+  font-family: Open;
+}
+
+#header1 a h2{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+#header2{
+  display:flex;
+  align-items:center;
+}
+
+#header2  div p{
+  padding-left: 2.5vw;
+  color: #fff;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+#cajaAggRegion{
+  position: absolute;
+  left: 70vw;
+  border: 1px solid black;
+  width: 20vw;
+  display:flex;
+  justify-content: center;
+}
+
+#cajaAggPais{
+  position: relative;
+  display: inline-block;
+  left: 64.5vw;
+  bottom: 5vh;
+  border: 1px solid black;
+  width: 10vw;
+}
+
+#cajaAggCiudad{
+  position: relative;
+  display: inline-block;
+  left: 61.5vw;
+  
+  border: 1px solid black;
+  width: 10vw;
+
+}
+
+ul, #regiones, #pais {
+  list-style-type: none;
+}
+
+ul,li{
+  padding: 0.5vw;
+}
+
+li{
+  padding-left: 2vw;
+}
+
+#editar, #eliminar{
+  position: relative;
+  left: 2vw;
+  
+  border: 1px solid black;
+  width: 5vw;
+  display:inline-block;
+  justify-content: center;
+}
+
+#eliminar{
+  display: inline-block;
+  left: 3vw; 
+  width: 7vw;
+  
+}
+
+#crearX{
+  position: absolute;
+  border: 1px solid black;
+  left: 40%;
+  top: 25%;
+  height: 42vh;
+  width: 25vw;
+  z-index: 99;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vw;
+}
+
+.blur{
+  filter: blur(2px);
+}
+
+.none-blur{
+  filter: blur(0);
+}
+.display-flex{
+  display:flex;
+}
+
+.display-none{
+  display: none;
+}
+
+.display-block{
+  display: block;
+}
