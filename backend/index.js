@@ -95,12 +95,14 @@ server.post("/crear/pedido", cancelarPedidosActivos, jsonParser, (req,res) =>{
   })
 })
 
-server.post('/agregarEquipo',jsonParser, (req, res) => {
+server.post('/agregarEquipo', jsonParser, (req, res) => {
+  console.log("si llego")
   const {
     nombre,
     color,
     tipo
   } = req.body;
+  console.log(nombre,color,tipo,"xd")
   
   sequelize.query("INSERT INTO equipo (nombre, color, id_tipoEquipo) VALUE(?,?,?)", {
       replacements: [nombre, color, tipo],
