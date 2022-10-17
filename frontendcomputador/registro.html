@@ -7,8 +7,7 @@
     <title>Registrar un Equipo</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
     <link rel="stylesheet" href="registro.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    
     <meta name="generator" content="Nicepage 4.19.3, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <meta name="theme-color" content="#478ac9">
@@ -23,7 +22,7 @@
         <div class="u-align-left u-border-2 u-border-grey-75 u-container-style u-group u-palette-1-light-1 u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <div class="u-form u-form-1">
-              <form class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px" >
+              <form class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" onsubmit="return false" style="padding: 15px" >
                 <div class="u-form-group u-form-name u-label-top">
                   <label for="name-558c" class="u-label u-label-1">Nombre</label>
                   <input type="text" placeholder="Nombre" id="name-558c" name="Nombre" class="u-border-2 u-border-grey-75 u-input u-input-rectangle u-palette-1-light-3 u-input-1" required="">
@@ -36,9 +35,8 @@
                   <label for="text-a447" class="u-label u-label-3">Tipo del Equipo</label>
                   <input type="text" placeholder="Tipo" id="text-a447" name="Tipo" class="u-border-2 u-border-grey-75 u-input u-input-rectangle u-palette-1-light-3 u-input-3" required="required">
                 </div>
-                <div class="u-form-group u-form-submit u-label-top">
-                  <input  class="u-form-control-hidden">
-                  <a href="Principal.html" class="u-border-5 u-border-grey-75 u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-white u-btn-1">Agregar</a>
+                <div class="u-form-group u-form-submit u-label-top" id="registrarEquipo">
+                  <button href="Principal.html" id="registrarEquipo" class="u-border-5 u-border-grey-75 u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-white u-btn-1">Agregar</button>
                 </div>
               </form>
             </div>
@@ -47,4 +45,6 @@
         <a href="Principal.html" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-2">VOLVER</a>
       </div>
     </section>
-</body></html>
+</body>
+<script src="./registro.js"></script>
+</html>

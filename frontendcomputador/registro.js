@@ -1,7 +1,7 @@
 
-let inputNombre = document.getElementById("nombre")
-let inputColor = document.getElementById("color")
-let inputTipo = document.getElementById("tipoEquipo")
+let inputNombre = document.getElementById("name-558c")
+let inputColor = document.getElementById("text-aa53")
+let inputTipo = document.getElementById("text-a447")
 let btnRegistrarEquipo = document.getElementById("registrarEquipo")
 
 function guardarEquipo(nombre, color, tipo) {
@@ -19,7 +19,7 @@ function guardarEquipo(nombre, color, tipo) {
         json: true,
     }
     
-    fetch(`http://localhost:4000/agregarEquipos`, parametros)
+    fetch(`http://localhost:4000/agregarEquipo`, parametros)
         .then(response => {
             let json = response.json()
             if (response.ok) {
@@ -33,23 +33,17 @@ function guardarEquipo(nombre, color, tipo) {
         .then(
             (data) => {
                 console.log(data, 'soy data');
-                alertify.message(data.mensaje);
-                let mensaje = document.getElementsByClassName("ajs-message")[0];
-                mensaje.style.background = "#1D72C2"
-                mensaje.style.color = "white"
-                /*setTimeout(function () {
+                setTimeout(function () {
                     document.location.reload();
-                }, 2000);*/
+                }, 2000);
             }
         )
         .catch(error => {
             console.log(error, 'error')
-            alertify.alert(error.mensaje);
         })
 }
 
 
 btnRegistrarEquipo.addEventListener("click", function () {
-   
     guardarEquipo(inputNombre.value, inputColor.value, inputTipo.value)
 })

@@ -5,3 +5,28 @@
 body{
     background-color: #1419DD;
 }
+
+#titulo{
+    color: #fff;
+    font-family: Roboto,sans-serif;
+}
+#cantidad{
+    color: gray;
+    font-family: Roboto,sans-serif;
+}
+
+#iptCantidad{
+    border-radius: 50px;
+}
+
+#btnAgregar{
+    font-family: Roboto,sans-serif;
+    border-style: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    margin: 18px auto 37px 0;
+    padding: 20px 43px 22px;
+    border-radius: 50px;
+}

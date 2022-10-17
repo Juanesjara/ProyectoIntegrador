@@ -36,7 +36,7 @@ btniniciarPedido.addEventListener("click", async () => {
     console.log(month, day, year)
     let fecha = `${year}-${month}-${day}`
     console.log(fecha)
-        
+
     let resultado = await crearPedido(fecha) // LLAMO A LA API PARA CREAR UN PEDIDO
     console.log(resultado, "xd")
     console.log(resultado.resultado[0], "perra") //DESCOMENTAR PARA  EXPONER
