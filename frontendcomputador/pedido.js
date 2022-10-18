@@ -1,9 +1,38 @@
+
 let pedido = sessionStorage.getItem("pedido");
 let subtitulo = document.getElementById("subtitulo");
 let selectObras = document.getElementById("obras");
 subtitulo.innerHTML = "Estas Creado el pedido #" + pedido;
 let parent = document.getElementById("parent")
 let equiposPuestos = []
+let btnConfirmar = document.getElementById("btnConfirmar");
+
+async function confirmarPedido(){
+    const parametros = {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        json: true
+    }
+    return await fetch(`http://localhost:4000/confirmar/pedido`,parametros)
+        .then(response => {
+            let json = response.json()
+            return json
+            .then(a =>{
+                return a 
+            })
+            
+        })
+        .catch(console.log)
+}
+
+btnConfirmar.addEventListener("click", async function(){
+    let respuesta = await confirmarPedido();
+    alert(respuesta.mensaje)
+    window.location.href = "./principal.html"
+
+})
+
+
 
 async function traerEquipo(id){
     const parametros = {

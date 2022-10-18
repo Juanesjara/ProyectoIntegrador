@@ -50,6 +50,22 @@ server.get("/traer/pedido/activo", jsonParser, (req,res) =>{
   })
 })
 
+server.put("/confirmar/pedido", jsonParser, (req,res) =>{
+  sequelize.query("UPDATE `pedido` SET `estado` = 2 WHERE `estado` = 1",{
+    type: sequelize.QueryTypes.UPDATE
+  })
+  .then(() => {
+    res.status(200).json({
+      mensaje: "Pedido Confirmado"
+    })
+  })
+  .catch(error => {
+    console.log(error, 'error')
+  })
+})
+
+
+
 server.put("/finalizar/pedido", jsonParser, (req,res) =>{
   const {id_pedido,fecha_fin} = req.body;
 
