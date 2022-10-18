@@ -120,18 +120,42 @@ server.post('/agregarEquipo', jsonParser, (req, res) => {
 })
 
 server.post("/agregar/equipo/pedido", jsonParser, (req,res)=>{
-  const {equipo, nombre} = req.body;
+  const {equipo, pedido} = req.body;
   sequelize.query("INSERT INTO `pedidosequipo`(id_pedido, id_equipo) VALUE(?,?)",{
-    replacements: [equipo, nombre],
+    replacements: [pedido,equipo],
     type: sequelize.QueryTypes.INSERT
+  }).then(equipos =>{
+    res.status(200).json(equipos)
+  })
+  .catch(error =>{
+    console.log(error, "error")
   })
 })
 
 server.post("/agregar/equipo/pedido/cantidad", jsonParser, (req,res)=>{
-  const {equipo, nombre,cantidad} = req.body;
+  const {equipo, pedido,cantidad} = req.body;
   sequelize.query("INSERT INTO `pedidosequipo`(id_pedido, id_equipo, cantidad_equipos) VALUE(?,?,?)",{
-    replacements: [equipo,nombre,cantidad],
+    replacements: [pedido,equipo,cantidad],
     type: sequelize.QueryTypes.INSERT
+  }).then(equipos =>{
+    res.status(200).json(equipos)
+  })
+  .catch(error =>{
+    console.log(error, "error")
+  })
+})
+
+server.get("/traer/equipos/pedido/:id", jsonParser, (req,res)=>{
+ const {id} = req.params;
+  sequelize.query("SELECT * FROM `pedidosequipo` WHERE `id_pedido` = ?",{
+    replacements: [id], 
+    type: sequelize.QueryTypes.SELECT
+  })
+  .then(equipos =>{
+    res.status(200).json(equipos)
+  })
+  .catch(error =>{
+    console.log(error, "error")
   })
 })
 
@@ -151,7 +175,7 @@ server.get("/traer/equipo/:id",jsonParser, (req, res) => {
   })
 
 })
-
+/*
 server.post('/agregar/equipos/pedido',jsonParser, (req, res) => {
     const {
       id_pedido,
@@ -172,6 +196,28 @@ server.post('/agregar/equipos/pedido',jsonParser, (req, res) => {
        
     })
 })
+
+server.post('/agregar/equipos/pedido/cantidad',jsonParser, (req, res) => {
+  const {
+    id_pedido,
+    id_equipo,
+    cantidad_equipos
+  } = req.body;
+  
+  sequelize.query("INSERT INTO pedidosequipo (id_pedido, id_equipo, cantidad_equipos) VALUE(?,?,?)", {
+      replacements: [id_pedido, id_equipo, cantidad_equipos],
+      type: sequelize.QueryTypes.INSERT
+    })
+    .then(() => {
+      res.status(200).json({
+        mensaje: "Equipo puesto en el pedido"
+      })
+    })
+    .catch(error => {
+      console.log(error, 'error')
+     
+  })
+})*/
 
 
 

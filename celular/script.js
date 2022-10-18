@@ -6,7 +6,7 @@ var numeroEquipo = urlParams.get('equipo');
 let titulo = document.getElementById("titulo")
 let divCantidad = document.getElementById("divCantidad")
 let btnAgregar = document.getElementById("btnAgregar");
-
+let iptCantidad = document.getElementById("iptCantidad");
 
 
 async function traerEquipo(id){
@@ -48,7 +48,7 @@ async function traerPedido(){
 async function agregarEquipoAlPedido(equipo,pedido){
     const pedidoEquipo = {
         "pedido": pedido,
-        "equipo": equipo
+        "equipo": equipo,
     }
     const parametros = {
         method: "POST",
@@ -56,7 +56,37 @@ async function agregarEquipoAlPedido(equipo,pedido){
         body: JSON.stringify(pedidoEquipo),
         json: true,
     }
-    fetch(`https://autopass.loca.lt/agregar/equipo/pedido`,parametros)
+    await fetch(`https://autopass.loca.lt/agregar/equipo/pedido`,parametros)
+    .then(response => {
+        let json = response.json()
+        if (response.ok) {
+            return json
+        } else {
+            return json.then(err => {
+                throw err
+            })
+        }
+    })
+    .then(
+        ()=>{
+            console.log("ya puse el equipo en el pedido")
+        }
+    )
+}
+
+async function agregarEquipoAlPedidoCantidad(equipo,pedido,cantidad_equipos){
+    const pedidoEquipo = {
+        "pedido": pedido,
+        "equipo": equipo,
+        "cantidad": cantidad_equipos
+    }
+    const parametros = {
+        method: "POST",
+        headers: {'Content-Type': 'application/json',},
+        body: JSON.stringify(pedidoEquipo),
+        json: true,
+    }
+    await fetch(`https://autopass.loca.lt/agregar/equipo/pedido/cantidad`,parametros)
     .then(response => {
         let json = response.json()
         if (response.ok) {
@@ -77,11 +107,14 @@ async function agregarEquipoAlPedido(equipo,pedido){
 btnAgregar.addEventListener("click", async function (){
     let pedidos = await traerPedido();
     console.log(pedidos)
-    let resultado = await traerEquipva
+    let resultado = await traerEquipo(numeroEquipo);
+    console.log(resultado)
     if(resultado[0].id_tipoEquipo == 1){
-
+        agregarEquipoAlPedido(resultado[0].id_equipo, pedidos[0].id_pedido)
+        
     }else{
-
+        agregarEquipoAlPedidoCantidad(resultado[0].id_equipo, pedidos[0].id_pedido, iptCantidad.value)
+       
     }
 
 });
