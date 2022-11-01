@@ -111,9 +111,10 @@ btnAgregar.addEventListener("click", async function (){
     console.log(resultado)
     if(resultado[0].id_tipoEquipo == 1){
         agregarEquipoAlPedido(resultado[0].id_equipo, pedidos[0].id_pedido)
-        
+        alert("Equipo Ingresado")
     }else{
         agregarEquipoAlPedidoCantidad(resultado[0].id_equipo, pedidos[0].id_pedido, iptCantidad.value)
+        alert("Equipo Ingresado")
        
     }
 
