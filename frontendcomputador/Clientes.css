@@ -41,6 +41,12 @@ header a:link, a:visited ,a:active{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
+header h2{
+  padding-left: 10vw !important;
+  color: #fff;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
 #cajaAggRegion{
   position: absolute;
   left: 70vw;
@@ -57,8 +63,7 @@ header a:link, a:visited ,a:active{
   bottom: 5vh;
   border: 1px solid black;
   width: 10vw;
-}
-
+} 
 #cajaAggCiudad{
   position: relative;
   display: inline-block;
@@ -129,4 +134,23 @@ li{
 
 .display-block{
   display: block;
+}
+
+
+#parent{
+  border: 1px solid black;
+  height: 100vh;
+  margin: 10px;
+}
+
+.empresa{
+  border: 1px solid blue;
+  width: 20vw;
+  margin: 2vw;
+}
+
+.linea{
+  width: 20vw;
+  border: 1px solid black;
+
 }
