@@ -4,7 +4,6 @@ async function crearPedido(fecha){
     const pedido = {
         "fecha_inicio": fecha
     }
-
     const parametros = {
         method: "POST",
         headers: {

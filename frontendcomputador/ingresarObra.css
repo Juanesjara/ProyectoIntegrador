@@ -1,0 +1,43 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1D72C2;
+}
+
+
+header h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #fff;
+}
+h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#map {
+    height: 50%;
+    width: 50%;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#parent{
+    display: flex;
+    
+}
+
+#parent div{
+    margin: 2vw;
+}
+
+#guardar{
+     width: 10%;
+     height: 5%;
+     position: relative;
+     left: 53vw;
+     bottom: 5vh;
+}

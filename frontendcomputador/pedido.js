@@ -112,8 +112,6 @@ async function colocandoEquiposPedido(){
 
 
 
-
-
 (async function colcandoObras(){
     let obras = await trayendoObras();
     console.log(obras)

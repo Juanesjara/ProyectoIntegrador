@@ -191,54 +191,36 @@ server.get("/traer/equipo/:id",jsonParser, (req, res) => {
   })
 
 })
-/*
-server.post('/agregar/equipos/pedido',jsonParser, (req, res) => {
-    const {
-      id_pedido,
-      id_equipo
-    } = req.body;
-    
-    sequelize.query("INSERT INTO pedidosequipo (id_pedido, id_equipo) VALUE(?,?)", {
-        replacements: [id_pedido, id_equipo],
-        type: sequelize.QueryTypes.INSERT
-      })
-      .then(() => {
-        res.status(200).json({
-          mensaje: "Equipo puesto en el pedido"
-        })
-      })
-      .catch(error => {
-        console.log(error, 'error')
-       
-    })
+
+server.get("/traer/empresas", jsonParser, (req, res) => {
+  sequelize.query("SELECT * FROM `empresa`",{
+    type: sequelize.QueryTypes.SELECT
+  })
+  .then(empresas =>{
+    res.status(200).json(empresas)
+  })
+  .catch(console.log)
 })
 
-server.post('/agregar/equipos/pedido/cantidad',jsonParser, (req, res) => {
-  const {
-    id_pedido,
-    id_equipo,
-    cantidad_equipos
-  } = req.body;
-  
-  sequelize.query("INSERT INTO pedidosequipo (id_pedido, id_equipo, cantidad_equipos) VALUE(?,?,?)", {
-      replacements: [id_pedido, id_equipo, cantidad_equipos],
-      type: sequelize.QueryTypes.INSERT
-    })
-    .then(() => {
-      res.status(200).json({
-        mensaje: "Equipo puesto en el pedido"
-      })
-    })
-    .catch(error => {
-      console.log(error, 'error')
-     
+server.post("/traer/obras", jsonParser, (req, res)=>{
+  let {id_empresa} = req.body 
+  sequelize.query("SELECT * FROM `obra` WHERE `id_empresa` = ?", {
+    replacements: [id_empresa],
+    type: sequelize.QueryTypes.SELECT
   })
-})*/
+  .then(obras =>{
+    res.status(200).json(obras)
+  })
+  .catch(console.log)
+})
 
-
-
-
-
+server.post("/crear/obra",jsonParser, (req, res)=>{
+  let{nombre, id_empresa, coordenadas} = req.body
+  sequelize.query("INSERT INTO `obra` (`nombre`, `id_empresa`, `coordenadas`) VALUES(?,?,?)",{
+    replacements: [nombre, id_empresa, coordenadas],
+    type:sequelize.QueryTypes.INSERT
+  })
+})
 
 server.listen(4000, "0.0.0.0" ,function () {
     console.log('ya estoy corriendo mi bro en el 4000')

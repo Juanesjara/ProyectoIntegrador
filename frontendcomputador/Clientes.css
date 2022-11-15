@@ -78,9 +78,7 @@ ul, #regiones, #pais {
   list-style-type: none;
 }
 
-ul,li{
-  padding: 0.5vw;
-}
+
 
 li{
   padding-left: 2vw;
@@ -139,18 +137,39 @@ li{
 
 #parent{
   border: 1px solid black;
+
   height: 100vh;
   margin: 10px;
+  display:flex;
 }
 
 .empresa{
   border: 1px solid blue;
   width: 20vw;
   margin: 2vw;
+  height: 40vh;
 }
 
 .linea{
   width: 20vw;
   border: 1px solid black;
 
+}
+
+#imagenMas{
+  width: 170px;
+  height: 150px;
+  position: relative;
+  left: 100px;
+  top: 40px;
+}
+
+#texto{
+  position: relative;
+  top: 30px;
+  left: 140px;
+}
+
+.empresa ul li{
+  padding-bottom: 2vh;
 }

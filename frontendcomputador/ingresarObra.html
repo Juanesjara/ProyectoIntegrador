@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="./ingresarObra.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+</head>
+
+<body>
+    <header>
+        <h2>Estas Ingresando una obra</h2>
+    </header>
+    <div id="parent">
+
+        <div>
+            <h3>Nombre:</h3>
+            <input type="text" name="" id="nombre">
+        </div>
+        
+        <div>
+            <h3>Empresa de la obra:</h3>
+            <select name="obras" id="obras" class=""></select>
+        </div>
+    </div>
+    <div>
+        <h3>Ubicacion de la obra</h3>
+    </div>
+    <div id="map"></div>
+    <button id="guardar">Guardar Obra</button>
+    <script src="./ingresarObra.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvJmWygOivbb2DHUoC66O_SNeF5g28M5k&callback=initMap"
+        async defer></script>
+</body>
+
+</html>
