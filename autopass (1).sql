@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2022 a las 08:02:44
+-- Tiempo de generación: 15-11-2022 a las 06:57:36
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -31,6 +31,14 @@ CREATE TABLE `empresa` (
   `id_empresa` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `empresa`
+--
+
+INSERT INTO `empresa` (`id_empresa`, `nombre`) VALUES
+(1, 'Constructora Capital'),
+(2, 'Conconcreto');
 
 -- --------------------------------------------------------
 
@@ -86,16 +94,19 @@ INSERT INTO `estadospedido` (`id_estado`, `nombre`) VALUES
 CREATE TABLE `obra` (
   `id_obra` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `id_empresa` int(11) NOT NULL
+  `id_empresa` int(11) NOT NULL,
+  `coordenadas` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `obra`
 --
 
-INSERT INTO `obra` (`id_obra`, `nombre`, `id_empresa`) VALUES
-(1, 'Eafit ciencias', 1),
-(2, 'cc viva envigado', 2);
+INSERT INTO `obra` (`id_obra`, `nombre`, `id_empresa`, `coordenadas`) VALUES
+(1, 'Cc viva Envigado', 2, '(6.175867854307779, -75.5923122768788)'),
+(2, 'Eafit edificio ciencias', 1, '(6.198381332223905, -75.57948746553888)'),
+(3, 'Puente 80 con san juan', 2, '(6.250490636273624, -75.60229622038224)'),
+(4, 'Puente de la 80 con colombia', 1, '(6.263576032378896, -75.59665105346232)');
 
 -- --------------------------------------------------------
 
@@ -140,7 +151,12 @@ INSERT INTO `pedido` (`id_pedido`, `id_obra`, `fecha_inicio`, `fecha_fin`, `esta
 (34, 0, '2022-10-17', '0000-00-00', 4),
 (35, 0, '2022-10-18', '0000-00-00', 2),
 (36, 0, '2022-10-18', '0000-00-00', 4),
-(37, 0, '2022-10-18', '0000-00-00', 2);
+(37, 0, '2022-10-18', '0000-00-00', 2),
+(38, 0, '2022-10-30', '0000-00-00', 4),
+(39, 0, '2022-10-30', '0000-00-00', 4),
+(40, 0, '2022-10-30', '0000-00-00', 4),
+(41, 0, '2022-11-10', '0000-00-00', 4),
+(42, 0, '2022-11-10', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -243,7 +259,7 @@ ALTER TABLE `tipoequipo`
 -- AUTO_INCREMENT de la tabla `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_empresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `equipo`
@@ -261,13 +277,13 @@ ALTER TABLE `estadospedido`
 -- AUTO_INCREMENT de la tabla `obra`
 --
 ALTER TABLE `obra`
-  MODIFY `id_obra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_obra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoequipo`
